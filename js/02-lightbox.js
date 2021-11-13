@@ -10,7 +10,7 @@ function createGalleryMarkup(pictures) {
   return pictures
     .map(({ preview, original, description }) => {
       return `<a class="gallery__item" href="${original}">
-  <img class="gallery__image" src="${preview}" alt="${description}" title = "${description}" />
+  <img class="gallery__image" src="${preview}" alt="${description}"  />
 </a>`;
     })
     .join("");
@@ -18,8 +18,13 @@ function createGalleryMarkup(pictures) {
 
 var lightbox = new SimpleLightbox(".gallery a");
 
-lightbox.options.captionDelay = 250;
-
 galleryContainer.addEventListener("click", (evt) => {
   evt.preventDefault();
+
+  lightbox.options.captionDelay = 250;
+
+  const pictures = document.querySelectorAll(".gallery__image");
+  for (let picture of pictures) {
+    picture.setAttribute("title", `${evt.target.getAttribute("alt")}`);
+  }
 });
