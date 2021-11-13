@@ -18,7 +18,9 @@ function createGalleryMarkup(pictures) {
 
 var lightbox = new SimpleLightbox(".gallery a");
 
-galleryContainer.addEventListener("click", (evt) => {
+galleryContainer.addEventListener("click", onPictureClick);
+
+function onPictureClick(evt) {
   evt.preventDefault();
 
   lightbox.options.captionDelay = 250;
@@ -27,4 +29,4 @@ galleryContainer.addEventListener("click", (evt) => {
   for (let picture of pictures) {
     picture.setAttribute("title", `${evt.target.getAttribute("alt")}`);
   }
-});
+}
