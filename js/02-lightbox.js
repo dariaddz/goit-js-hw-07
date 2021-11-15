@@ -19,14 +19,18 @@ function createGalleryMarkup(pictures) {
 var lightbox = new SimpleLightbox(".gallery a");
 
 galleryContainer.addEventListener("click", onPictureClick);
+const pictures = document.querySelectorAll(".gallery__image");
+lightbox.options.captionsData = "alt";
+lightbox.options.captionType = "attr";
+lightbox.options.captionDelay = 250;
 
 function onPictureClick(evt) {
   evt.preventDefault();
 
-  lightbox.options.captionDelay = 250;
+  // lightbox.options.captionDelay = 250;
 
-  const pictures = document.querySelectorAll(".gallery__image");
-  for (let picture of pictures) {
-    picture.setAttribute("title", `${evt.target.getAttribute("alt")}`);
-  }
+  // const pictures = document.querySelectorAll(".gallery__image");
+  // for (let picture of pictures) {
+  //   picture.setAttribute("title", `${evt.target.getAttribute("alt")}`);
+  // }
 }
